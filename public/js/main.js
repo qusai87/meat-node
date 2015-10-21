@@ -93,6 +93,17 @@
             }
         );
     });
+
+    GlobalEvents.bind('getQRCode', function(event, booking ) {
+        EventManager.getQRCode(booking.room, booking.time, booking.duration,
+            function success(data) {           
+                GlobalEvents.trigger('showQRCode', data);
+            },
+            function failure() {
+                GlobalEvents.trigger('bookingFailure', booking);
+            }
+        );
+    });
     
     // update MEAT from server everyday at midnight.
     runAtMidnight(function() { window.location.reload(); });

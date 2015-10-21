@@ -289,6 +289,18 @@ var EventManager = (function() {
                 error : errorHandler(onError)
             });
         }
+
+        function getQRCode(roomKey, startTimeISO, endTimeISO, onSuccess, onError) {
+            return $.ajax({
+                type: 'POST',
+                url : url + 'data/qr?room=' + roomKey +
+                    '&start=' + startTimeISO + '&end=' + endTimeISO +
+                    (secretKey ? '&secret=' + secretKey : ''),
+                dataType : 'json',
+                success : onSuccess,
+                error : errorHandler(onError)
+            });
+        }
         
         this.getRoom = function (roomName) {
             return roomsByName[roomName];
@@ -302,6 +314,13 @@ var EventManager = (function() {
             endTime.setMinutes(startTime.getMinutes() + durationMinutes);
             
             return bookRoom(room.id(), startTime.toISOString(), endTime.toISOString(), onSuccess, onError);
+        };
+
+        this.getQRCode = function(room, startTime, durationMinutes, onSuccess, onError) {
+            var endTime = new Date(startTime);
+            endTime.setMinutes(startTime.getMinutes() + durationMinutes);
+            
+            return getQRCode(room.id(), startTime.toISOString(), endTime.toISOString(), onSuccess, onError);
         };
     }
 

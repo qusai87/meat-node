@@ -2,6 +2,11 @@ body.loading
     button#close.link-button.hidden &larr; Back
     button#find-other-rooms.link-button.hidden &larr; Other rooms
     button#book-me.link-button.hidden Book me &rarr;
+
+    if user
+        p welcome back #{user.displayName}
+    //.g-signin2(data-onsuccess="onSignIn")
+    //a.g-signout.hidden(href="#",onclick="signOut();") Sign out
     #errormsg.hidden
     #container.status-busy
         #status
@@ -29,7 +34,11 @@ body.loading
                 strong.time-available
                     | ?
                 |  minutes
-
+            #QR.hidden
+                p
+                    | Scan QR Code to continue 
+                ul#time
+                    li#QRContent
             #controls
                 p
                     | Book it 
@@ -55,3 +64,8 @@ body.loading
     script(src="/js/ui.js")
     script(src="/js/eventManager.js")
     script(src="/js/main.js")
+    //script(src="/js/auth.js")
+    //script(src="https://apis.google.com/js/platform.js",async,defer)
+
+    if user
+        script window.user = !{JSON.stringify(user)}

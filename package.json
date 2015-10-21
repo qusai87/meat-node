@@ -1,7 +1,7 @@
 {
-  "name": "meat",
+  "name": "meat-node",
   "description": "Meeting room kiosk app for displaying meeting room schedules and booking rooms in your organization. Built against Google Apps, but other sources can be defined.",
-  "version": "0.3.3",
+  "version": "1.0.0",
   "preferGlobal": true,
   "homepage": "https://bitbucket.org/aahmed/meat",
   "author": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/aahmed/meat.git"
+    "url": "git+https://bitbucket.org/aahmed/meat.git"
   },
   "bugs": {
     "url": "https://bitbucket.org/aahmed/meat/issues"
@@ -33,12 +33,14 @@
     "test": "grunt test"
   },
   "dependencies": {
+    "2fa": "^0.1.2",
     "express": "2.5.11",
     "jade": "0.27.0",
-    "open": "0.0.2",
-    "winston": "0.6.2",
     "mkdirp": "0.3.0",
-    "node.extend": "1.0.0"
+    "node.extend": "1.0.0",
+    "open": "0.0.2",
+    "passport-google-oauth": "^0.2.0",
+    "winston": "0.6.2"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -46,5 +48,26 @@
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1"
   },
-  "keywords": []
+  "keywords": [],
+  "_id": "meat@0.3.3",
+  "_shasum": "45e670184553efe7dda25ce6446f1e6a0fca7571",
+  "_from": "meat@*",
+  "_npmVersion": "1.4.9",
+  "_npmUser": {
+    "name": "hitsthings",
+    "email": "hitsthings@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "hitsthings",
+      "email": "hitsthings@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "45e670184553efe7dda25ce6446f1e6a0fca7571",
+    "tarball": "http://registry.npmjs.org/meat/-/meat-0.3.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/meat/-/meat-0.3.3.tgz",
+  "readme": "ERROR: No README data found!"
 }

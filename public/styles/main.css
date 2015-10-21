@@ -39,10 +39,15 @@ html { -webkit-font-smoothing: antialiased; }
  
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
-
 a, a:active, a:visited { color:#607890; }
 a:hover { color:#036; }
 
+.g-signout:active,.g-signout:visited  {
+    color: #fff;
+}
+.g-signout:hover  {
+    color: #607890;
+}
 
 ul { margin-left:30px; }
 ol { margin-left:30px; list-style-type: decimal; }
@@ -271,6 +276,7 @@ body.disabled #container {
     font-size:10rem;
     padding: 5rem 5rem 3rem;
 }
+#QR #time,
 #controls #time,
 #controls #time li {
     margin:0;

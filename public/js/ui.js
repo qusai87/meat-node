@@ -578,6 +578,37 @@ var UI = {
                         $freeAt;
                         
                         function onTimeRequiredClicked(e) {
+                            if (!window.user) {
+                                (function() {
+                                    var bookingRoom = model.getBookingRoom();
+                                    var onComplete = function() {
+                                        GlobalEvents.unbind('roomUpdatedByServer', onSuccess);
+                                        GlobalEvents.unbind('bookingFailure', onFailure);
+                                        
+                                    }, onSuccess = function (event, data) {
+                                        $('#controls').hide();
+                                        $('#QR').removeClass('hidden').find('#QRContent').html("<img src='"+data.qr+"'/>");
+                                        if (room === bookingRoom) {
+                                            onComplete();
+                                        }
+                                    }, onFailure = function(event, booking) {
+                                        if (booking.room === bookingRoom) {
+                                            $timeRequired.text('ERROR');
+                                            setTimeout(onComplete, 2000);
+                                        }
+                                    };
+                                    GlobalEvents.bind('showQRCode', onSuccess);
+                                    GlobalEvents.bind('QRFailed', onFailure);
+                                    GlobalEvents.trigger('getQRCode', {
+                                        room : bookingRoom,
+                                        title : 'Impromptu Meeting',
+                                        time : model.getBookingTime(),
+                                        duration : model.getBookingDuration()
+                                    });
+                                })();
+                                return;
+                                
+                            }
                             if (!$timeRequired.hasClass('disabled')) {
                                 var bookingRoom = model.getBookingRoom(),
                                     onComplete = function() {
