@@ -10,7 +10,7 @@ function guid() {
 
 
 var key = guid();
-var serverIP = 'http://172.17.39.33:8000';
+var serverIP = 'http://52.18.17.27:8000';
 var socket = io.connect(serverIP);
 socket.emit('setKey', key);
 
