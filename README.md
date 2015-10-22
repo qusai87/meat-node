@@ -1,5 +1,6 @@
-#MEAT
+# MEAT-NODE
 
+# Fork from https://bitbucket.org/aahmed/meat.git
 ##What It Is
 
 MEAT is meant to be displayed outside your meeting rooms on any device with a 
